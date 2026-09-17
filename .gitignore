@@ -37,3 +37,6 @@ yarn-error.log*
 
 # Claude
 .claude/settings.local.json
+
+# Local-only docs (not tracked)
+docs/plan.md
