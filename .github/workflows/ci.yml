@@ -10,6 +10,14 @@ permissions:
 jobs:
   checks:
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        task: [lint, check-types]
+
+    name: ${{ matrix.task }}
+
     steps:
       - uses: actions/checkout@v7
 
@@ -22,7 +30,4 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - name: Print versions
-        run: |
-          node -v
-          pnpm -v
+      - run: pnpm ${{ matrix.task }}
